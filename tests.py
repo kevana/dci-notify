@@ -76,3 +76,4 @@ def test_get_index(app):
 
 def test_get_humanstxt(app):
     # get_resource(app, '/humans.txt')
+    pass
