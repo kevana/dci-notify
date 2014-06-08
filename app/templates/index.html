@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %} - Home{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h1>Welcome to app</h1>
+    <p>With app you can receive DCI event results via text as soon as they are posted.</p>
+    <p>To get started enter your 10 digit phone number and carrier. You will receive a confirmation message.</p>
+    <form action="{{ url_for('main.index') }}" method="POST">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        {{ form.carrier.label }}
+        {{ form.carrier(class='form-control') }}
+        {% for error in form.errors.carrier %}
+          <span class="alert-danger">{{ error }}</span>
+        {% endfor %}
+      </div>
+      <div class="form-group">
+        {{ form.phone_number.label }}
+        {{ form.phone_number(class='form-control', placeholder='555-123-4567') }}
+        {% for error in form.errors.phone_number %}
+          <span class="alert-danger">{{ error }}</span>
+        {% endfor %}
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+      {% if registered %}
+      <button type="button" class="btn btn-default">Resend Code</button>
+      {% endif %}
+    </form>
+  </div><!--jumbotron-->
+</div>
+{% endblock %}
+{% block js_footer %}
+{{ super() }}
+<script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.js"></script>
+<script type="text/javascript" src="/static/jquery.maskedinput-1.3.min.js"></script>
+<script type="text/javascript">
+jQuery(function($){
+  $('#phone_number').mask('(999) 999-9999', {placeholder: " "});
+});
+</script>
+{% endblock %}

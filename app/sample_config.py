@@ -2,15 +2,12 @@
 Contains configuration directives for Flask and its plugins
 '''
 
-import os
-basedir = os.path.abspath(os.path.dirname(__file__))
-
 # Flask.session, CSRF
 SECRET_KEY = 'Shhhh, this is a secret'
 CSRF_ENABLED = True
 
-# Flask-SQLAlchemy
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'tmp/app.db')
+# Flask-SQLAlchemy - Create an in-memory database
+SQLALCHEMY_DATABASE_URI = 'sqlite://'
 
 # Flask-Mail
 MAIL_SERVER = 'smtp.example.com'
