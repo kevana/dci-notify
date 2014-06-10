@@ -4,7 +4,6 @@ SQLAlchemy models for AppName
 
 
 from flask.ext.sqlalchemy import SQLAlchemy
-from enum import Enum
 
 from app.sms import carriers
 

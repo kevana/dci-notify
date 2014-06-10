@@ -4,4 +4,8 @@ env/
 
 *.pyc
 
+*.log
+
 dev_config.py
+
+prd_config.py
