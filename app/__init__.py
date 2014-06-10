@@ -35,7 +35,7 @@ def create_app(name, config_filename):
     admin.app = app
     admin.add_view(ModelView(User, db.session))
 
-    if not app.debug:
+    if not (app.debug or app.config.get('LOGGING_DISABLE', False)):
         import logging
         from logging import Formatter
         from logging.handlers import SMTPHandler, RotatingFileHandler
